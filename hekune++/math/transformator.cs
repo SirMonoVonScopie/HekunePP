@@ -17,12 +17,12 @@ namespace Hekune.Math
 
         public vector forward()
         {
-            return (new Math.vector(0, 0, 1) * this).Normalize();
+            return new Math.vector(0, 0, 1) * this * new Math.vector(-1, -1, 1);
         }
 
         public vector right()
         {
-            return (new Math.vector(1, 0, 0) * this).Normalize();
+            return new Math.vector(1, 0, 0) * this * new Math.vector(1, -1, -1);
         }
     }
 }

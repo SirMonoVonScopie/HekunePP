@@ -246,9 +246,9 @@
         public static vector operator +(vector v1, transformator trans)
         {
             vector vDest = v1;
-            vDest = vector.Yaw(vDest, trans.yaw);
-            vDest = vector.Pitch(vDest, trans.pitch);
-            vDest = vector.Roll(vDest, trans.roll);
+            vDest = vector.Yaw(vDest, -trans.yaw);
+            vDest = vector.Pitch(vDest, -trans.pitch);
+            vDest = vector.Roll(vDest, -trans.roll);
             vDest += trans.position;
             return vDest;
         }
@@ -268,7 +268,7 @@
             vector vDest = v1;
             vDest -= trans.position;
             vDest *= trans;
-            return vDest + trans.position;
+            return vDest;
         }
 
         public Point ToD()
@@ -316,6 +316,15 @@
                         v1.X * s2,
                         v1.Y * s2,
                         v1.Z * s2);
+        }
+
+        public static vector operator *(vector v1, vector v2)
+        {
+            return
+                new vector(
+                        v1.X * v2.X,
+                        v1.Y * v2.Y,
+                        v1.Z * v2.Z);
         }
 
         /// <summary>

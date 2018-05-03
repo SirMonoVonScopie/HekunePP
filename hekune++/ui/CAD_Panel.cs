@@ -117,24 +117,23 @@ namespace Hekune.UI
 
         public void routineListener()
         {
-            if (cameraMode) { 
-            Form.ActiveForm.Text = projectInfo.mainCamera.posNRot.position.ToString();
-            if (keyW) {
-                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.forward();
+            if (cameraMode) {
+                if (keyW) {
+                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.forward() * 0.4;
                 mustRedraw = true;
             }
             if (keyA) {
-                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.right();
+                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.right() * 0.4;
                 mustRedraw = true;
             }
             if (keyS)
             {
-                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.forward();
+                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.forward() * 0.4;
                 mustRedraw = true;
             }
             if (keyD)
             {
-                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.right();
+                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.right() * 0.4;
                 mustRedraw = true;
             }
             if (mustRedraw) { this.Invalidate(); mustRedraw = false; }
