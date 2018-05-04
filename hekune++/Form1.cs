@@ -24,5 +24,16 @@ namespace Hekune
         {
             cadpPanel.routineListener();
         }
+
+        private void tbFPS_Scroll(object sender, EventArgs e)
+        {
+            tRoutineTrigger.Interval = Convert.ToInt16(1000 / (tbFPS.Value * 0.1));
+        }
+
+        private void tbFishEye_Scroll(object sender, EventArgs e)
+        {
+            projectInfo.mainCamera.depthStretch = tbFishEye.Value * 0.005 + 1;
+            cadpPanel.Invalidate();
+        }
     }
 }

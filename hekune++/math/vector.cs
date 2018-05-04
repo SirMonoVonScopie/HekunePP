@@ -262,6 +262,15 @@
             return vDest;
         }
 
+        public static vector operator /(vector v1, transformator trans)
+        {
+            vector vDest = v1;
+            vDest = vector.Pitch(vDest, trans.pitch);
+            vDest = vector.Yaw(vDest, trans.yaw);
+            vDest = vector.Roll(vDest, trans.roll);
+            return vDest;
+        }
+
         public static vector operator -(vector v1, transformator trans)
         {
             

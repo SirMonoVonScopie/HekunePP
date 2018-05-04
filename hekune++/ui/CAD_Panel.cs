@@ -21,6 +21,11 @@ namespace Hekune.UI
         bool keyS = false;
         bool keyD = false;
         bool keyShift = false;
+        bool keyCtrl = false;
+        bool keySpace = false;
+
+        //misc
+        double currentCamSpeed = 0.4;
         protected override void OnMouseDown(MouseEventArgs e) {
             base.OnMouseDown(e);
             switch (e.Button) {
@@ -60,7 +65,9 @@ namespace Hekune.UI
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
             if (cameraMode) {
-                projectInfo.mainCamera.posNRot.pitch += (MousePosition.Y - previousMousePosition.Y) * 0.02;
+                if (MousePosition.Y - previousMousePosition.Y < 0 && projectInfo.mainCamera.posNRot.pitch > -System.Math.PI * 0.5
+                    || MousePosition.Y - previousMousePosition.Y > 0 && projectInfo.mainCamera.posNRot.pitch < System.Math.PI * 0.5)
+                    projectInfo.mainCamera.posNRot.pitch += (MousePosition.Y - previousMousePosition.Y) * 0.02;
                 projectInfo.mainCamera.posNRot.yaw -= (MousePosition.X - previousMousePosition.X) * 0.02;
                 this.Invalidate();
             }
@@ -84,8 +91,14 @@ namespace Hekune.UI
                 case Keys.D:
                     keyD = true;
                     break;
-                case Keys.Shift:
+                case Keys.ShiftKey:
                     keyShift = true;
+                    break;
+                case Keys.ControlKey:
+                    keyCtrl = true;
+                    break;
+                case Keys.Space:
+                    keySpace = true;
                     break;
             }
         }
@@ -107,8 +120,14 @@ namespace Hekune.UI
                 case Keys.D:
                     keyD = false;
                     break;
-                case Keys.Shift:
+                case Keys.ShiftKey:
                     keyShift = false;
+                    break;
+                case Keys.ControlKey:
+                    keyCtrl = false;
+                    break;
+                case Keys.Space:
+                    keySpace = false;
                     break;
             }
         }
@@ -118,25 +137,35 @@ namespace Hekune.UI
         public void routineListener()
         {
             if (cameraMode) {
+
+                if (keyShift) currentCamSpeed = 1.1;
+                else if (keyCtrl) currentCamSpeed = 0.05;
+                else currentCamSpeed = 0.4;
+
                 if (keyW) {
-                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.forward() * 0.4;
+                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.forward() * currentCamSpeed;
                 mustRedraw = true;
             }
             if (keyA) {
-                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.right() * 0.4;
+                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.right() * currentCamSpeed;
                 mustRedraw = true;
             }
             if (keyS)
             {
-                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.forward() * 0.4;
+                projectInfo.mainCamera.posNRot.position -= projectInfo.mainCamera.posNRot.forward() * currentCamSpeed;
                 mustRedraw = true;
             }
             if (keyD)
             {
-                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.right() * 0.4;
+                projectInfo.mainCamera.posNRot.position += projectInfo.mainCamera.posNRot.right() * currentCamSpeed;
                 mustRedraw = true;
             }
-            if (mustRedraw) { this.Invalidate(); mustRedraw = false; }
+              if (keySpace)
+                {
+                    projectInfo.mainCamera.posNRot.position += new Math.vector(0, -1, 0) * currentCamSpeed;
+                    mustRedraw = true;
+                }
+                if (mustRedraw) { this.Invalidate(); mustRedraw = false; }
         } }
 
         protected override void OnResize(EventArgs e)

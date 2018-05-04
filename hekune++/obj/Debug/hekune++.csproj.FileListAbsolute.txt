@@ -7,3 +7,12 @@ C:\Users\Dave\Desktop\Repository\hekune++\hekune++\obj\Debug\Hekune.Properties.R
 C:\Users\Dave\Desktop\Repository\hekune++\hekune++\obj\Debug\hekune++.csproj.GenerateResource.Cache
 C:\Users\Dave\Desktop\Repository\hekune++\hekune++\obj\Debug\hekune++.exe
 C:\Users\Dave\Desktop\Repository\hekune++\hekune++\obj\Debug\hekune++.pdb
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\bin\Debug\hekune++.exe.config
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\obj\Debug\hekune++.exe
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\obj\Debug\hekune++.pdb
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\bin\Debug\hekune++.exe
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\bin\Debug\hekune++.pdb
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\obj\Debug\hekune++.csprojResolveAssemblyReference.cache
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\obj\Debug\Hekune.mainForm.resources
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\obj\Debug\Hekune.Properties.Resources.resources
+C:\Users\Leon\Documents\GitHub\HekunePP\hekune++\obj\Debug\hekune++.csproj.GenerateResource.Cache
